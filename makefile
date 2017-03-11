@@ -1,10 +1,10 @@
 
 all:
-	g++ oscillatore/oscillatore.cpp
-	g++ integratore/integratore.cpp
+	g++ integratore/src/integratore.cpp -o integratore/bin/integratore
+	g++ oscillatore/src/oscillatore.cpp -o oscillatore/bin/integratore
 osc:
-	g++ oscillatore/oscillatore.cpp
+	g++ oscillatore/src/oscillatore.cpp -o oscillatore/bin/integratore
 int:
-	g++ integratore/integratore.cpp
+	g++ integratore/src/integratore.cpp -o integratore/bin/integratore
 clean:
-	rm *.out
+	rm */bin/*

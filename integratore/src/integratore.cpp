@@ -6,7 +6,7 @@
 
 
 
-double f(const double & x)
+double f(const double x)
 {
   return sin(x);
 }
@@ -18,7 +18,7 @@ double rettangoli(double a, double b, int N) //integra f in [a,b] con N rettango
 
   for (int i = 0; i < N; i++)
   {
-    // DA FARE
+	  sum+=f(a+i*dx)*dx;
   }
 
   return sum;
@@ -31,7 +31,7 @@ double trapezi(double a, double b, int N)
 
   for (int i = 0; i < N; i++)
   {
-    // DA FARE
+	  sum+=(f(a+i*dx)+f(a+(i+1)*dx))*dx/2.0;
   }
 
   return sum;
@@ -39,8 +39,22 @@ double trapezi(double a, double b, int N)
 
 double simpson(double a, double b, int N)
 {
-  //DA FARE
-  return 0.0;
+	if(N%2!=0)
+		return 0;	//Il metodo di Cavalieri-Simpson non funziona se n è dispari
+	else
+	{
+		double sum=0.0;
+		double dx = (b - a) / N;
+		for (int i = 1; i < N; i++)
+		{
+			if(i%2==0)
+				sum+=2*f(a+i*dx)*dx/3;
+			else
+				sum+=4*f(a+i*dx)*dx/3;
+		}
+		sum+=(f(a)+f(b))*dx/3;
+		return sum;
+	}
 }
 
 int main(void)
