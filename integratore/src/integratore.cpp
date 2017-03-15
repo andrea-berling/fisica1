@@ -4,8 +4,6 @@
 #include <cmath>
 #include <iostream>
 
-
-
 double f(const double x)
 {
   return sin(x);
